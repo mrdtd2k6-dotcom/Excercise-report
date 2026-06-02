@@ -2,21 +2,22 @@ x = -15 : 0.05 : 15;
 y = -10 : 0.05 : 10;
 
 [X, Y] = meshgrid(x, y); 
-H = 2; W = 1.2;
+H = 2;
+W = 1.2;
 
 
-% Hình (a):
+%(a):
 bus = abs(Y + 3.5) <= W/2 & abs(X) <= 8;
 R_grid = sqrt(X.^2 + (Y - 0.5).^2);
 ring = R_grid >= (3.5 - W) & R_grid <= 3.5;
 a = bus | ring;
 
-% Hình (b):
+%(b):
 Yc_b = 3 * sin(X * pi / 6); 
 Yc_b(X < -3) = -3; Yc_b(X > 3) = 3;
 b = abs(Y - Yc_b) <= W/2 & abs(X) <= 8;
 
-% Hình (c):
+%(c):
 Yc_c_top = ones(size(X)) * 0.8;
 Yc_c_top(X < -4) = 4;
 Yc_c_top(X > 4) = 4;
@@ -27,11 +28,13 @@ Yc_c_top(mask_right) = 0.8 + 1.6 * (X(mask_right) - 2);
 Yc_c_bot = -Yc_c_top;
 c = (abs(Y - Yc_c_top) <= W/2 | abs(Y - Yc_c_bot) <= W/2) & abs(X) <= 8;
 
-% Hình (d):
+%(d):
 Yc_d_top = zeros(size(X));
 Yc_d_top(abs(X) <= 3) = 3; 
-mask_split = X > -6 & X < -3; Yc_d_top(mask_split) = X(mask_split) + 6;
-mask_comb = X > 3 & X < 6;    Yc_d_top(mask_comb) = -X(mask_comb) + 6;
+mask_split = X > -6 & X < -3; 
+Yc_d_top(mask_split) = X(mask_split) + 6;
+mask_comb = X > 3 & X < 6;    
+Yc_d_top(mask_comb) = -X(mask_comb) + 6;
 Yc_d_bot = -Yc_d_top;
 d = (abs(Y - Yc_d_top) <= W/2 | abs(Y - Yc_d_bot) <= W/2) & abs(X) <= 9;
 
