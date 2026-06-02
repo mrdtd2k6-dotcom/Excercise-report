@@ -16,7 +16,7 @@ Psi = A0 * exp(-(x+b).^2 / w0^2) .* exp(1i * k0 * x);
 save_step = 800;
 num_saves = floor(num_steps / save_step) + 1;
 data_Psi = zeros(num_saves, N);
-data_Psi(1, :) = abs(Psi).^2; % Lưu mật độ xác suất
+data_Psi(1, :) = abs(Psi).^2;
 save_idx = 2;
 
 f_Psi = @(psi) -1i * (-0.5 * dao_ham2(psi, dx) + V .* psi);
