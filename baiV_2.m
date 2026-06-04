@@ -48,17 +48,14 @@ for i = 1:4
     mask_dilated = conv2(double(mask), ones(3), 'same') > 0;
     boundary = mask_dilated & ~mask;
     
-    Z = NaN(size(X));
+    Z = zeros(size(X)); 
     Z(mask) = H;         
     Z(boundary) = 0;     
-
-    subplot(2, 2, i);
-    mesh(X, Y, Z);
-   
-    title(titles{i});
-    view(-35, 45);
-    grid on;
     
-    camlight('headlight'); 
-    lighting gouraud; 
+    Z_plot = Z;
+    Z_plot(~(mask | boundary)) = NaN;
+    
+    subplot(2, 2, i);
+    mesh(X, Y, Z_plot);
+
 end
