@@ -26,7 +26,7 @@ Z(boundary) = 0;
 
 figure('Color', 'w');
 surf(X, Y, Z, 'LineStyle', 'none');
-colormap([0.2 0.2 0.7; 1 1 0]); % Nền xanh lam đậm, trụ màu vàng
+colormap([0.2 0.2 0.7; 1 1 0]);
 title('Waveguide chữ thập (Mạng vuông)');
 axis equal; grid on; view(3);
 camlight('headlight'); lighting gouraud;
