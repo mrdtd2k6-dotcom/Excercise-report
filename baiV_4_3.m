@@ -3,7 +3,7 @@ b = 1.0;
 H = 3;       
 [X, Y] = meshgrid(-6:0.01:6, -6:0.01:6);
 
-
+figure('Color', 'w', 'Name', '3D Waveguides', 'Position', [100, 100, 1000, 800]);
 mask = false(size(X));
 for m = -8:8
     for n = -8:8
